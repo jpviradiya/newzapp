@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class NewzItem extends Component {
-  render() {
-    let { title, desc, imgUrl, newzUrl, author, date,source } = this.props;
+const NewzItem= (props)=>{
+    let { title, desc, imgUrl, newzUrl, author, date,source } = props;
     return (
       <>
         <div className="card" style={{ minHeight: '500px' }}>
@@ -18,4 +17,4 @@ export default class NewzItem extends Component {
       </>
     )
   }
-} 
+export default NewzItem
