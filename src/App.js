@@ -1,29 +1,18 @@
 import './App.css';
 
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import NavBar from './components/NavBar';
 import Newz from './components/Newz';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
 
-export default class App extends Component {
-  pageSize = 9
-  apiKey=process.env.REACT_APP_NEWZ_API
+const App =()=>{
+  const pageSize = 9
+  const apiKey=process.env.REACT_APP_NEWZ_API
 
-  state = {
-    progress: 0
-  }
+  const [progress, setProgress] = useState(0)
 
-  setProgress = (progress) => {
-    this.setState({ progress: progress })
-  }
-
-  render() {
     return (
       <>
         <Router>
@@ -31,20 +20,21 @@ export default class App extends Component {
           <LoadingBar
             color='#f11946'
             height={3}
-            progress={this.state.progress}
+            progress={progress}
           />
           <Routes>
-            <Route exact path="/" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="general" pageSize={this.pageSize} country="in" category="general" />}></Route>
-            <Route exact path="/business" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="business" pageSize={this.pageSize} country="in" category="business" />}></Route>
-            <Route exact path="/entertainment" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="entertainment" pageSize={this.pageSize} country="in" category="entertainment" />}></Route>
-            <Route exact path="/general" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="genera;" pageSize={this.pageSize} country="in" category="general" />}></Route>
-            <Route exact path="/health" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="health" pageSize={this.pageSize} country="in" category="health" />}></Route>
-            <Route exact path="/science" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="science" pageSize={this.pageSize} country="in" category="science" />}></Route>
-            <Route exact path="/sports" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="sports" pageSize={this.pageSize} country="in" category="sports" />}></Route>
-            <Route exact path="/technology" element={<Newz setProgress={this.setProgress} apiKey={this.apiKey} key="technology" pageSize={this.pageSize} country="in" category="technology" />}></Route>
+            <Route exact path="/" element={<Newz setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general" />}></Route>
+            <Route exact path="/business" element={<Newz setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business" />}></Route>
+            <Route exact path="/entertainment" element={<Newz setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment" />}></Route>
+            <Route exact path="/general" element={<Newz setProgress={setProgress} apiKey={apiKey} key="genera;" pageSize={pageSize} country="in" category="general" />}></Route>
+            <Route exact path="/health" element={<Newz setProgress={setProgress} apiKey={apiKey} key="health" pageSize={pageSize} country="in" category="health" />}></Route>
+            <Route exact path="/science" element={<Newz setProgress={setProgress} apiKey={apiKey} key="science" pageSize={pageSize} country="in" category="science" />}></Route>
+            <Route exact path="/sports" element={<Newz setProgress={setProgress} apiKey={apiKey} key="sports" pageSize={pageSize} country="in" category="sports" />}></Route>
+            <Route exact path="/technology" element={<Newz setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country="in" category="technology" />}></Route>
           </Routes>
         </Router>
       </>
     )
   }
-}
+
+export default App
